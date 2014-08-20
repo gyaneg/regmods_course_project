@@ -1,24 +1,17 @@
 # Regression Models Course Project Report
 ## Martin Hediger
 
+To do:
+- Box-Scat: Increase axis font size, correct axis labels 
+
 ### Exploratory Analysis
-In an exploratory analysis sense, first we have a look at the data.
-```{r fig.height=5, fig.width=10, echo=, echo=F, warning=F}
-p1 <- ggplot(mtcars,
-        aes(wt, mpg, col=factor(mtcars$am, levels=0:1, labels=c("Auto", "Man"))))
-p1 <- p1 + geom_boxplot(position="dodge")
-p1 <- p1 + theme(legend.position="bottom")
-p1 <- p1 + scale_color_discrete(name="Transmission Type")
+As an initial test, dependence of `mpg` on `wt` is analysed.
+`multiplot` function defined [here](https://github.com/mzhKU/regmods_course_project/blob/master/multiplot.R).
 
-p2 <- ggplot(mtcars, aes(wt, mpg))
-p2 <- p2 + geom_point(aes(color=factor(am, levels=0:1, labels=c("Auto", "Man"))))
-p2 <- p2 +theme(legend.position="bottom")
-p2 <- p2 + scale_color_discrete(name="Transmission Type")
+Fig. [`box-scat`](https://github.com/mzhKU/regmods_course_project/blob/master/box-scat.R)
 
-# http://www.cookbook-r.com/Graphs/Multiple_graphs_on_one_page_(ggplot2)
-source("multiplot.R")
-
-multiplot(p1, p2, cols=2)
+```{r fig.height=5, fig.width=10, echo=, echo=F, warning=F, cache=T}
+source("box-scat.R")
 ```
 
 The boxplot shows that most likely the automatic cars have lower MPG (and possibly lower variance in the data).
