@@ -1,0 +1,14 @@
+This is pdfTeX, Version 3.1415926-1.40.11 (TeX Live 2010) (format=pdfetex 2010.7.21)  19 AUG 2014 23:37
+entering extended mode
+ restricted \write18 enabled.
+ file:line:error style messages enabled.
+ %&-line parsing enabled.
+**\nonstopmode \input /Users/mzhKU_work/courses/data_science/Regression Models/
+pa/notes-pa-regmod.md
+
+! Emergency stop.
+<*> ...mzhKU_work/courses/data_science/Regression 
+                                                  Models/pa/notes-pa-regmod.md
+*** (job aborted, file error in nonstop mode)
+
+!  ==> Fatal error occurred, no output PDF file produced!
