@@ -1,0 +1,43 @@
+ ---
+title: "Regression Models Course Project Report"
+output:
+  pdf_document:
+    keep_tex: yes
+---
+
+# Regression Models Course Project Report
+
+## Martin Hediger
+
+### Executive Summary
+This short report analyses if 1) automatic or manual transmission results in larger miles-per-gallon (mpg) and 2) quantifies the effect of manual or automatic transmission on mpg in the cars from the `mtcars` dataset.  
+Automatic transmission vehicles appear to be less efficient than manual transmission vehicles (Fig. "box-scat" A).
+A linear relationship between miles-per-gallon range and car weight for both automatic and manual transmission vehicles is found (Fig. "box-scat" B).
+
+### Exploratory Analysis
+As an initial test, dependence of `mpg` on `wt` is analysed.  
+[`box-scat`](https://github.com/mzhKU/regmods_course_project/blob/master/box-scat.R) A: Boxplot, B: Scatterplot of `mpg` against `wt`.
+
+```{r fig.height=5, fig.width=10, echo=, echo=F, warning=F, cache=T}
+source("box-scat.R")
+```
+
+[Source code for the panel plot](https://github.com/mzhKU/regmods_course_project/blob/master/multiplot.R).
+
+According to the boxplot, automatic cars have lower MPG (and possibly lower variance in the data).
+Importantly, the relationships appear linear and no outliers which could affect correlation values are identified.
+The only aspect which is slightly problematic is the limited dataset size (n=32).  
+It is noted that apparently most cars with automatic transmission also are heavier which possibly confounds the observation, this would be subject to further research.
+
+
+### Results
+**Question 1: Which transmission type has higher MPG?**  
+Based on the exploratory analysis above, it is found that on average the difference between MPG(auto) and MPG(man) is around `r mean(mtcars[mtcars$am==1, "mpg"]) - mean(mtcars[mtcars$am==0, "mpg"])` miles-per-gallon (=`mean(mtcars[mtcars$am==1, "mpg"]) - mean(mtcars[mtcars$am==0, "mpg"])`).
+
+**Question 2: Quantification of MPG-difference between transmission types**  
+MODEL 1  
+First, the full model is assessed, i.e. dependence of `mpg` on all other variables:
+```{r}
+fit_full <- lm(mpg ~   + factor(am), data=mtcars)
+summary(fit_full)$coefficients
+```
